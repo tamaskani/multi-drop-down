@@ -1,0 +1,64 @@
+@use '../../styles/colors' as *;
+@use '../../styles/functions' as *;
+
+.multi-dropdown-root {
+  position: relative;
+  display: inline-block;
+}
+
+.multi-dropdown-list {
+  position: absolute;
+  top: 100%;
+  list-style: none;
+  padding-left: 0;
+  margin-left: 0;
+  list-style-position: inside;
+  border: 1px solid #eee;
+  box-shadow: 0px 0px 3px 2px $primary-200;
+  border-radius: spacing(3);
+  width: 100%;
+  margin-block-start: spacing(0.5);
+  margin-block-end: spacing(0.5);
+}
+
+.multi-dropdown-list-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  list-style: none;
+  padding: 12px 16px;
+  text-align: left;
+  font-weight: 500;
+  margin: spacing(1);
+  border-radius: spacing(2);
+}
+
+.multi-dropdown-list-item-selected {
+  background-color: $primary-200;
+  color: $primary-700;
+}
+
+.multi-dropdown-list-item:hover {
+  background-color: $primary-100;
+  color: $primary-700;
+}
+
+.multi-dropdown-input-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: $primary-500 solid 2px;
+  border-radius: spacing(2);
+  padding: spacing(0.5);
+  box-shadow: 0px 0px 3px 2px $primary-200;
+}
+
+.multi-dropdown-input {
+  border: none;
+  outline: none;
+  background: transparent;
+  padding: spacing(1);
+  font-size: 16px;
+}

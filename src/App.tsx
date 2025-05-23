@@ -1,24 +1,37 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import MultiDropdown from './components/multi-dropdown';
+
+const defaultOptions = [
+  { label: 'Option 1', id: '1' },
+  { label: 'Option 2', id: '2' },
+  { label: 'Option 3', id: '3' },
+];
 
 function App() {
+  const [state, setState] = useState<any[]>([]);
+  const [options, setOptions] = useState(defaultOptions);
+
+  const handleChange = (selected: any[]) => {
+    setState(selected);
+  };
+
+  const handleCreate = (value: string) => {
+    const newOption = { label: value, id: Math.random().toString(36).substring(2, 10) };
+    setOptions([...options, newOption]);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <MultiDropdown
+        options={options}
+        onChange={handleChange}
+        onCreate={handleCreate}
+        value={state}
+        itemsLabel={(item) => item.label}
+        placeholder="Select options"
+        width="300px"
+      />
     </div>
   );
 }
